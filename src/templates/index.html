@@ -8,8 +8,8 @@
     <script>
       var serverIP = [];
       {% for server in servers %}
-        serverIP.push({{ server }});
-        console.log({{ server }});
+//        serverIP.push({{ server }});
+        console.log({{ server.Hostname }});
       {% endfor %}
     </script>
     <style media="screen">
@@ -42,6 +42,7 @@
     {% for server in servers %}
       <div class="wrapper">
         <div class="server">
+          {{ server.Hostname }}, {{ server.Color }}
         </div>
       </div>
     {% endfor %}
