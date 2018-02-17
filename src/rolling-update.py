@@ -2,7 +2,8 @@ from flask import Flask, render_template
 import requests
 import os
 
-master_ip = os.environ.get('MASTER_IP', '10.146.0.5:8080')
+# master_ip = os.environ.get('MASTER_IP', '10.146.0.5:8080')
+master_ip = os.environ.get('MASTER_IP', 'localhost:8001')
 namespace = os.environ.get('NAMESPACE', 'default')
 
 app = Flask(__name__)
@@ -18,6 +19,8 @@ def rolling_update_demo():
     for ip in ip_list:
         page = requests.get('http://{}:8080'.format(ip))
         server_list.append(page.json())
+    # server_list.append(dict([('Hostname', 'host1'), ('Color', 'blue')]))
+    # server_list.append(dict([('Hostname', 'host2'), ('Color', 'blue')]))
 
     return render_template('index.html', servers=server_list)
 

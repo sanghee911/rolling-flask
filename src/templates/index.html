@@ -6,11 +6,8 @@
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
     </script>
     <script>
-      var serverIP = [];
-      {% for server in servers %}
-//        serverIP.push({{ server }});
-        console.log({{ server.Hostname }});
-      {% endfor %}
+      var serverIP = {{servers|safe}};
+      console.log(serverIP);
     </script>
     <style media="screen">
       .wrapper {
